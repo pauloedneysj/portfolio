@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .animate-width {
+    width: 41.666667%;
+    animation: expand 2s ease forwards;
+  }
+
+  @keyframes expand {
+    0% {
+      width: 41.666667%;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+
+  .animate-width-inverse {
+    width: 100%;
+    animation: reduce 2s ease forwards;
+  }
+
+  @keyframes reduce {
+    0% {
+      width: 100%;
+    }
+    100% {
+      width: 41.666667%;
+    }
+  }
+
+  .animate-opacity {
+    opacity: 0.2;
+    animation: fadeIn 2s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0.2;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .animate-opacity-inverse {
+    opacity: 1;
+    animation: fadeOut 1s ease forwards;
+  }
+
+  @keyframes fadeOut {
+    0% {
+      opacity: 1; /* No início, a opacidade é 1 (100%) */
+    }
+    100% {
+      opacity: 0; /* No final, a opacidade é 0 */
+    }
+  }
+
+  .shine-effect {
+    position: absolute;
+    overflow: hidden;
+    background: radial-gradient(white, #3984ff00 70%);
+    opacity: 0.1;
+    transition: opacity 2s;
+    pointer-events: none;
+  }
+}
