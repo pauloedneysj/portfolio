@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+@layer base {
+  body {
+    @apply dark:bg-zinc-900 bg-[#fafafa];
+  }
+}
+
 @layer components {
   .animate-width {
     width: 41.666667%;
@@ -52,19 +67,57 @@
 
   @keyframes fadeOut {
     0% {
-      opacity: 1; /* No início, a opacidade é 1 (100%) */
+      opacity: 1;
     }
     100% {
-      opacity: 0; /* No final, a opacidade é 0 */
+      opacity: 0;
     }
   }
 
-  .shine-effect {
-    position: absolute;
-    overflow: hidden;
+  .animate-opacity-dropdown {
+    opacity: 0.2;
+    animation: dropdownfadeIn 0.7s ease forwards;
+  }
+
+  @keyframes dropdownfadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .animate-opacity-dropdown-inverse {
+    opacity: 1;
+    animation: dropdownFadeOut 0.7s ease forwards;
+  }
+
+  @keyframes dropdownFadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .animate-opacity-dropdown {
+    opacity: 0.2;
+    animation: dropdownfadeIn 0.5s ease forwards;
+  }
+
+  .cursor-shine-effect {
     background: radial-gradient(white, #3984ff00 70%);
     opacity: 0.1;
     transition: opacity 2s;
     pointer-events: none;
+  }
+
+  .glassmorphism {
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    border-radius: 10px;
   }
 }

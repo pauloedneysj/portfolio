@@ -3,15 +3,15 @@
 import { Locale, i18n } from "@/config/i18n-config";
 import { IoIosArrowDown } from "react-icons/io";
 import Image from "next/image";
-import usFlag from "@/img/flags/us.png";
-import brFlag from "@/img/flags/br.png";
+import enUSFlag from "@/img/flags/en-US.png";
+import ptBRFlag from "@/img/flags/pt-BR.png";
 import { getDictionaryUseClient } from "@/dictionaries/get-dictionary-use-client";
 import { useState } from "react";
 import Link from "next/link";
 
 const flag = {
-  "en-US": usFlag,
-  "pt-BR": brFlag,
+  "en-US": enUSFlag,
+  "pt-BR": ptBRFlag,
 };
 
 export default function LanguageDropdown({ lang }: { lang: Locale }) {
@@ -19,10 +19,7 @@ export default function LanguageDropdown({ lang }: { lang: Locale }) {
 
   const [languages, setLanguages] = useState<Locale[]>([]);
 
-  const onSelectedStyle =
-    languages.length > 0
-      ? "text-md font-bold animate-pulse"
-      : "text-md font-bold";
+  const onSelectedStyle = languages.length > 0 ? " -translate-y-1" : "";
 
   const onSelectedStyle2 =
     languages.length > 0
@@ -38,21 +35,28 @@ export default function LanguageDropdown({ lang }: { lang: Locale }) {
   };
 
   return (
-    <div className="relative inline-flex justify-center">
+    <div className="relative max-sm:flex-col inline-flex justify-center">
       <div
-        className="flex items-center space-x-2 cursor-pointer"
+        className={
+          "flex items-center space-x-1 cursor-pointer transition ease-in-out delay-150 hover:origin-center hover:-translate-y-1 duration-300" +
+          onSelectedStyle
+        }
         onClick={handleSelectedLanguages}
       >
-        {/* <Image
+        <Image
           src={flag[lang as Locale]}
           alt="selected-language-flag"
           className="w-5 h-5"
-        /> */}
-        <span className={onSelectedStyle}>{dict.navbar.languages[lang]}</span>
-        <IoIosArrowDown />
+        />
+        <div className="flex flex-row items-center justify-center">
+          <span className="text-md font-bold dark:text-white">
+            {dict.navbar.languages[lang]}
+          </span>
+          <IoIosArrowDown className="mt-1 dark:text-white" />
+        </div>
       </div>
       {languages.length > 0 && (
-        <ul className="absolute w-max py-1 mt-8 space-y-1 z-20 bg-white border border-gray-200 rounded-md shadow-lg animate-opacity">
+        <ul className="absolute w-max py-1 mt-8 space-y-1 z-20 bg-white border border-gray-200 rounded-md shadow-lg animate-opacity-dropdown">
           {languages.map((language, index) => (
             <li
               key={index}
@@ -72,7 +76,7 @@ export default function LanguageDropdown({ lang }: { lang: Locale }) {
                 className={
                   language === lang
                     ? "text-md font-bold cursor-default text-gray-600"
-                    : "text-md font-bold"
+                    : "text-md font-bold dark:text-zinc-900"
                 }
               >
                 {dict.navbar.languages[language]}

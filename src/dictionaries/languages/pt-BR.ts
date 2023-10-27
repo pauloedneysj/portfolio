@@ -1,14 +1,22 @@
 export const ptBR = {
   navbar: {
+    about: "Sobre mim",
+    experience: "Experiência",
+    projects: "Projetos",
     languages: {
       "en-US": "Inglês",
       "pt-BR": "Português",
     },
+    burger: {
+      theme: {
+        light: "Claro",
+        dark: "Escuro",
+      },
+    },
   },
   home: {
-    greet: "Olá,",
-    name: "Sou Paulo,",
-    presentation: "Desenvolvedor de software",
+    name: "Paulo Edney",
+    office: "Engenheiro de Software na LaCETI",
     download: "Baixar CV",
   },
 };
