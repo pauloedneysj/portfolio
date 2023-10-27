@@ -49,10 +49,10 @@ export default function LanguageDropdown({ lang }: { lang: Locale }) {
           className="w-5 h-5"
         />
         <div className="flex flex-row items-center justify-center">
-          <span className="text-md font-bold dark:text-white">
+          <span className="text-md font-bold dark:text-white max-sm:text-white">
             {dict.navbar.languages[lang]}
           </span>
-          <IoIosArrowDown className="mt-1 dark:text-white" />
+          <IoIosArrowDown className="mt-1 dark:text-white max-sm:text-white" />
         </div>
       </div>
       {languages.length > 0 && (
