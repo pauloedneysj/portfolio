@@ -15,11 +15,6 @@ export default function HomePage({
 }: {
   params: { lang: Locale };
 }) {
-  window.addEventListener("resize", () => {
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty("--vh", `${vh}px`);
-  });
-
   const dict = getDictionaryUseClient(lang);
   const isOpen = useAtomValue(isOpenAtom);
 
