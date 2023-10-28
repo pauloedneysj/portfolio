@@ -43,20 +43,15 @@ export default function LanguageDropdown({ lang }: { lang: Locale }) {
         }
         onClick={handleSelectedLanguages}
       >
-        <Image
-          src={flag[lang as Locale]}
-          alt="selected-language-flag"
-          className="w-5 h-5"
-        />
         <div className="flex flex-row items-center justify-center">
-          <span className="text-md font-bold dark:text-white max-sm:text-white">
+          <span className="text-md font-bold max-sm:text-primary dark:max-sm:text-typography">
             {dict.navbar.languages[lang]}
           </span>
-          <IoIosArrowDown className="mt-1 dark:text-white max-sm:text-white" />
+          <IoIosArrowDown className="mt-1 max-sm:text-primary dark:max-sm:text-typography" />
         </div>
       </div>
       {languages.length > 0 && (
-        <ul className="absolute w-max py-1 mt-8 space-y-1 z-20 bg-white border border-gray-200 rounded-md shadow-lg animate-opacity-dropdown">
+        <ul className="absolute w-max py-1 mt-8 max-sm:mt-28 max-[440px]:left-[-12%] max-[640px]:left-[-7%] space-y-1 z-20 bg-primary border border-gray-200 rounded-md shadow-lg animate-opacity-dropdown">
           {languages.map((language, index) => (
             <li
               key={index}
@@ -70,13 +65,16 @@ export default function LanguageDropdown({ lang }: { lang: Locale }) {
                 src={flag[language]}
                 alt="dropdown-language-flag"
                 className="w-5 h-5"
+                placeholder="blur"
+                blurDataURL={flag[language].blurDataURL}
+                priority={true}
               />
               <Link
                 href={`/${language}`}
                 className={
                   language === lang
-                    ? "text-md font-bold cursor-default text-gray-600"
-                    : "text-md font-bold dark:text-zinc-900"
+                    ? "text-md font-bold cursor-default text-disabled"
+                    : "text-md font-bold"
                 }
               >
                 {dict.navbar.languages[language]}

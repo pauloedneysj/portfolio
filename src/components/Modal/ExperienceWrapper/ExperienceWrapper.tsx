@@ -7,7 +7,7 @@ type ExperienceProps = {
   lang: Locale;
 };
 
-export default function Experience({ lang }: ExperienceProps) {
+export default function ExperienceWrapper({ lang }: ExperienceProps) {
   const dict = getDictionaryUseClient(lang);
 
   return (

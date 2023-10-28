@@ -15,11 +15,9 @@ export default function DownloadButton({ title }: DownloadButtonProps) {
   return (
     <button
       onClick={handleDownload}
-      className="max-sm:relative sm:absolute bottom-12 sm:right-2/4 rounded-full bg-gradient-to-r from-zinc-600 to-zinc-900 max-sm:p-2 p-3 w-max h-max flex justify-center items-center cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
+      className="max-sm:relative sm:absolute bottom-12 sm:right-2/4 border-2 border-typography text-typography hover:text-primary hover:bg-secondary dark:text-typography dark:hover:text-primary dark:hover:bg-typography  dark:border-typography max-sm:p-2 p-3 w-max h-max flex justify-center items-center cursor-pointer  transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
     >
-      <p className="text-gray-100 font-bold max-sm:text-[10px] text-sm">
-        {title}
-      </p>
+      <p className="font-bold max-sm:text-[10px] text-xs">{title}</p>
     </button>
   );
 }

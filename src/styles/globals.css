@@ -13,8 +13,20 @@ body {
 }
 
 @layer base {
-  body {
-    @apply dark:bg-zinc-900 bg-[#fafafa];
+  html {
+    --color-primary: #ffffff;
+    --color-secondary: #000000;
+    --color-buttons: #ffffff;
+    --color-typography: #000000;
+    --color-disabled: #808080;
+  }
+
+  html.dark {
+    --color-primary: #000000;
+    --color-secondary: #161616;
+    --color-buttons: #ffffff;
+    --color-typography: #ffffff;
+    --color-disabled: #808080;
   }
 }
 
@@ -116,9 +128,46 @@ body {
   }
 
   .glassmorphism {
-    background: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(1px);
-    -webkit-backdrop-filter: blur(1px);
-    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.11);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+  }
+
+  .animate-on-mount {
+    position: relative;
+    left: 200%;
+    animation: on-mount 3s forwards;
+  }
+
+  @keyframes on-mount {
+    to {
+      left: 0;
+    }
+  }
+
+  .animate-move-forward {
+    position: relative;
+    left: -125%;
+    animation: slide-in 1s forwards;
+  }
+
+  @keyframes slide-in {
+    to {
+      left: 0;
+    }
+  }
+
+  .animate-move-backward {
+    position: relative;
+    right: -125%;
+    animation: slide-out 1s forwards;
+  }
+
+  @keyframes slide-out {
+    to {
+      right: 0;
+    }
   }
 }

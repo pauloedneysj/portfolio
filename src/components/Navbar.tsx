@@ -3,8 +3,8 @@
 import { Locale } from "@/config/i18n-config";
 import LanguageDropdown from "./LanguageDropdown";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { BsSun } from "react-icons/bs";
-import { BsMoon } from "react-icons/bs";
+import { LuFlashlight } from "react-icons/lu";
+import { LuFlashlightOff } from "react-icons/lu";
 import { useTheme } from "next-themes";
 import { useAtom } from "jotai";
 import { isOpenAtom, modalTypeAtom } from "@/atoms/modal-atoms";
@@ -72,9 +72,9 @@ export default function Navbar({ lang }: NavbarProps) {
         <LanguageDropdown lang={lang} />
         {currentTheme === "dark" ? (
           <>
-            <BsMoon
-              size={16}
-              className="cursor-pointer transition ease-in-out delay-150 hover:origin-center hover:-rotate-90 duration-300"
+            <LuFlashlightOff
+              size={18}
+              className="cursor-pointer -rotate-180 transition ease-in-out delay-150 hover:origin-center hover:-translate-y-1 duration-300"
               onClick={() =>
                 theme === "dark" ? setTheme("light") : setTheme("dark")
               }
@@ -82,9 +82,9 @@ export default function Navbar({ lang }: NavbarProps) {
           </>
         ) : (
           <>
-            <BsSun
-              size={20}
-              className="cursor-pointer transition ease-in-out delay-150 hover:origin-center hover:-rotate-90 duration-300"
+            <LuFlashlight
+              size={18}
+              className="cursor-pointer -rotate-180 transition ease-in-out delay-150 hover:origin-center hover:-translate-y-1 duration-300"
               onClick={() =>
                 theme === "dark" ? setTheme("light") : setTheme("dark")
               }

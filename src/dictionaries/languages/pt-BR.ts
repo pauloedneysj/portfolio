@@ -1,6 +1,6 @@
 export const ptBR = {
   navbar: {
-    about: "Sobre mim",
+    about: "Sobre",
     experience: "Experiência",
     projects: "Projetos",
     languages: {
@@ -17,6 +17,8 @@ export const ptBR = {
   home: {
     name: "Paulo Edney",
     office: "Engenheiro de Software na LaCETI",
+    description:
+      "Eu construo produtos e experiências digitais acessíveis e inclusivos para a web.",
     download: "Baixar CV",
   },
 };

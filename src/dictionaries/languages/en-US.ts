@@ -1,6 +1,6 @@
 export const enUS = {
   navbar: {
-    about: "About me",
+    about: "About",
     experience: "Experience",
     projects: "Projects",
     languages: {
@@ -17,6 +17,8 @@ export const enUS = {
   home: {
     name: "Paulo Edney",
     office: "Software Engineer at LaCETI",
+    description:
+      "I build accessible, inclusive products and digital experiences for the web.",
     download: "Download CV",
   },
 };

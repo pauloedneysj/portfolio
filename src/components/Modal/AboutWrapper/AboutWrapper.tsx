@@ -7,7 +7,7 @@ type AboutProps = {
   lang: Locale;
 };
 
-export default function About({ lang }: AboutProps) {
+export default function AboutWrapper({ lang }: AboutProps) {
   const dict = getDictionaryUseClient(lang);
 
   return (
