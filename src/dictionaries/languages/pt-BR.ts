@@ -16,7 +16,12 @@ export const ptBR = {
   },
   home: {
     name: "Paulo Edney",
-    office: "Engenheiro de Software na LaCETI",
+    office: {
+      frontend: "Desenvolvedor Frontend",
+      backend: "Desenvolvedor Backend",
+      web: "Desenvolvedor Web",
+      softwareEngineer: "Engenheiro de Software",
+    },
     description:
       "Eu construo produtos e experiências digitais acessíveis e inclusivos para a web.",
     download: "Baixar CV",

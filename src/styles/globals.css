@@ -124,7 +124,6 @@ body {
     background: radial-gradient(white, #3984ff00 70%);
     opacity: 0.1;
     transition: opacity 2s;
-    pointer-events: none;
   }
 
   .glassmorphism {

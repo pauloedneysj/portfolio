@@ -16,7 +16,12 @@ export const enUS = {
   },
   home: {
     name: "Paulo Edney",
-    office: "Software Engineer at LaCETI",
+    office: {
+      frontend: "Frontend Developer",
+      backend: "Backend Developer",
+      web: "Web Developer",
+      softwareEngineer: "Software Engineer",
+    },
     description:
       "I build accessible, inclusive products and digital experiences for the web.",
     download: "Download CV",

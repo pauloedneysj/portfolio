@@ -43,15 +43,23 @@ export default function LanguageDropdown({ lang }: { lang: Locale }) {
         }
         onClick={handleSelectedLanguages}
       >
-        <div className="flex flex-row items-center justify-center">
-          <span className="text-md font-bold max-sm:text-primary dark:max-sm:text-typography">
+        <div className="flex flex-row items-center justify-center gap-1">
+          <Image
+            src={flag[lang]}
+            alt="dropdown-language-flag"
+            className="sm:hidden w-5 h-5"
+            placeholder="blur"
+            blurDataURL={flag[lang].blurDataURL}
+            priority={true}
+          />
+          <span className="text-md font-bold max-sm:text-primary dark:max-sm:text-typography inline-flex gap-1">
             {dict.navbar.languages[lang]}
+            <IoIosArrowDown className="mt-1 max-sm:text-primary dark:max-sm:text-typography" />
           </span>
-          <IoIosArrowDown className="mt-1 max-sm:text-primary dark:max-sm:text-typography" />
         </div>
       </div>
       {languages.length > 0 && (
-        <ul className="absolute w-max py-1 mt-8 max-sm:mt-28 max-[440px]:left-[-12%] max-[640px]:left-[-7%] space-y-1 z-20 bg-primary border border-gray-200 rounded-md shadow-lg animate-opacity-dropdown">
+        <ul className="absolute w-max py-1 mt-8 max-sm:mt-28 space-y-1 z-20 bg-primary border border-gray-200 rounded-md shadow-lg animate-opacity-dropdown">
           {languages.map((language, index) => (
             <li
               key={index}
