@@ -1,6 +1,5 @@
 import { Locale } from "@/config/i18n-config";
 import { projects } from "./ProjectsWrapper";
-import { getDictionaryUseClient } from "@/dictionaries/get-dictionary-use-client";
 import { useState, useEffect } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import ProjectListItem from "./ProjectListItem";
@@ -11,15 +10,14 @@ type ProjectsProps = {
 };
 
 export default function ProjectList({ lang, projects }: ProjectsProps) {
-  const dict = getDictionaryUseClient(lang);
   var sm = window.matchMedia("(max-width: 640px)").matches;
   var md = window.matchMedia("(max-width: 768px)").matches;
-  let onMount = true;
 
+  const [onMount, setOnMount] = useState(true);
   const [projectsPerPage, setProjectsPerPage] = useState(projects);
   const [page, setPage] = useState(1);
-  const [isForward, setIsForward] = useState(false);
-  const [isBackward, setIsBackward] = useState(false);
+  const [isNext, setIsNext] = useState(false);
+  const [isPrev, setIsPrev] = useState(false);
   const itemsPerPage = sm ? 1 : md ? 2 : 3;
 
   const nextPagination = () => {
@@ -27,20 +25,20 @@ export default function ProjectList({ lang, projects }: ProjectsProps) {
     const nextPage = page + 1;
 
     if (nextPage <= totalPages) {
-      onMount = false;
-
       const startIndex = (nextPage - 1) * itemsPerPage;
       const endIndex = startIndex + itemsPerPage;
+
       setProjectsPerPage(projects.slice(startIndex, endIndex));
       setPage(nextPage);
-
-      setIsBackward(false);
-      setIsForward(true);
+      setOnMount(false);
+      setIsPrev(false);
+      setIsNext(true);
     }
   };
 
   const prevPagination = () => {
     const prevPage = page - 1;
+    setOnMount(false);
 
     if (prevPage >= 1) {
       const startIndex = (prevPage - 1) * itemsPerPage;
@@ -49,15 +47,31 @@ export default function ProjectList({ lang, projects }: ProjectsProps) {
       setPage(prevPage);
     }
 
-    setIsForward(false);
-    setIsBackward(true);
+    setIsNext(false);
+    setIsPrev(true);
   };
 
   useEffect(() => {
     const startIndex = (page - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     setProjectsPerPage(projects.slice(startIndex, endIndex));
-  }, [isBackward, isForward, itemsPerPage, page, projects]);
+  }, [itemsPerPage, page, projects]);
+
+  useEffect(() => {
+    if (isNext) {
+      setTimeout(() => {
+        setIsNext(false);
+      }, 1000);
+    }
+  }, [isNext]);
+
+  useEffect(() => {
+    if (isPrev) {
+      setTimeout(() => {
+        setIsPrev(false);
+      }, 1000);
+    }
+  }, [isPrev]);
 
   return (
     <ul className="flex flex-grow flex-row gap-2 justify-between items-center">
@@ -69,13 +83,13 @@ export default function ProjectList({ lang, projects }: ProjectsProps) {
         onClick={prevPagination}
       />
       <div
-        className={`flex flex-1 ${onMount && "animate-on-mount"} 
-        ${isForward && "animate-move-forward"}${
-          isBackward && "animate-move-backward"
-        }`}
+        className={`flex flex-1
+        ${onMount && "animate-on-mount"}
+        ${isNext && "animate-slide-right"}
+        ${isPrev && "animate-slide-left"}`}
       >
         {projectsPerPage.map((project, index) => (
-          <ProjectListItem key={index} project={project} />
+          <ProjectListItem key={index} lang={lang} project={project} />
         ))}
       </div>
       <IoIosArrowForward

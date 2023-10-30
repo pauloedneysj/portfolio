@@ -41,9 +41,9 @@ export default function ThemeSwitcher({ lang }: ThemeSwitcherProps) {
         >
           <LuFlashlight
             size={16}
-            className="cursor-pointer text-typography transition ease-in-out delay-150 hover:origin-center hover:-translate-y-1 duration-300"
+            className="cursor-pointer max-sm:text-primary text-typography transition ease-in-out delay-150 hover:origin-center hover:-translate-y-1 duration-300"
           />
-          <p className="sm:hidden text-md font-bold text-primary">
+          <p className="sm:hidden text-md font-bold max-sm:text-primary">
             {dict.navbar.burger.theme[currentTheme as "light" | "dark"]}
           </p>
         </div>

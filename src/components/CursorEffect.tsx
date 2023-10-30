@@ -7,10 +7,6 @@ export default function CursorEffect() {
   const screenCoords = useAtomValue(screenCoordsAtom);
 
   return (
-    // <div
-    //   className="absolute w-full h-full m-0 p-0 z-50 pointer-events-auto"
-    //   onMouseMove={handleMouseMove}
-    // >
     <div
       id="cursor-effect"
       style={{
@@ -19,6 +15,5 @@ export default function CursorEffect() {
       }}
       className="absolute overflow-hidden w-[40rem] h-[40rem] max-sm:hidden cursor-shine-effect pointer-events-none"
     />
-    // </div>
   );
 }

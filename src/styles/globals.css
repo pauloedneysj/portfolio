@@ -146,25 +146,25 @@ body {
     }
   }
 
-  .animate-move-forward {
+  .animate-slide-left {
     position: relative;
     left: -125%;
-    animation: slide-in 1s forwards;
+    animation: slide-left 1s forwards;
   }
 
-  @keyframes slide-in {
+  @keyframes slide-left {
     to {
       left: 0;
     }
   }
 
-  .animate-move-backward {
+  .animate-slide-right {
     position: relative;
     right: -125%;
-    animation: slide-out 1s forwards;
+    animation: slide-right 1s forwards;
   }
 
-  @keyframes slide-out {
+  @keyframes slide-right {
     to {
       right: 0;
     }

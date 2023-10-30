@@ -45,7 +45,7 @@ export default function ProjectsWrapper({ lang }: ProjectsProps) {
 
   return (
     <div className="flex flex-col items-center h-full">
-      <h1 className="flex-shrink max-sm:text-2xl text-4xl font-bold text-white">
+      <h1 className="flex-shrink max-sm:text-4xl text-4xl font-bold text-white">
         {dict.navbar.projects}
       </h1>
       <ProjectList lang={lang} projects={projects} />

@@ -46,9 +46,3 @@ export default async function LocaleLayout({
     </html>
   );
 }
-
-// import localFont from "next/font/local";
-
-// export const virtousSlab = localFont({
-//   src: "../../../public/fonts/Virtuous-Slab.otf",
-// });

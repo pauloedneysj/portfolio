@@ -18,6 +18,9 @@ export default function HomePage({
   params: { lang: Locale };
 }) {
   const dict = getDictionaryUseClient(lang);
+
+  var sm = window.matchMedia("(max-width: 640px)").matches;
+
   const isOpen = useAtomValue(isOpenAtom);
   const setScreenCoords = useSetAtom(screenCoordsAtom);
 
@@ -53,24 +56,26 @@ export default function HomePage({
               >
                 {dict.home.name}
               </p>
-              <p className="max-sm:text-sm max-[950px]:text-md text-lg space-y-4 tracking-wide">
-                <TypeAnimation
-                  sequence={[
-                    dict.home.office.backend,
-                    2000,
-                    dict.home.office.frontend,
-                    2000,
-                    dict.home.office.web,
-                    2000,
-                    dict.home.office.softwareEngineer,
-                    2000,
-                  ]}
-                  wrapper="span"
-                  speed={50}
-                  style={{ fontSize: "2em", display: "inline-block" }}
-                  repeat={Infinity}
-                />
-              </p>
+              <TypeAnimation
+                sequence={[
+                  dict.home.office.backend,
+                  2000,
+                  dict.home.office.frontend,
+                  2000,
+                  dict.home.office.web,
+                  2000,
+                  dict.home.office.softwareEngineer,
+                  2000,
+                ]}
+                wrapper="span"
+                speed={50}
+                style={{
+                  display: "inline-block",
+                  fontSize: sm ? "1.5rem" : "2.25rem",
+                  lineHeight: sm ? "2rem" : "2.5rem",
+                }}
+                repeat={Infinity}
+              />
               <p className="max-sm:text-xs max-[950px]:text-sm text-md dark:text-zinc-500 text-zinc-800">
                 {dict.home.description}
               </p>
