@@ -1,16 +1,15 @@
 "use client";
 
-import { LuFlashlight } from "react-icons/lu";
-import { LuFlashlightOff } from "react-icons/lu";
+import { VscColorMode } from "react-icons/vsc";
 import { useTheme } from "next-themes";
 import { Locale } from "@/config/i18n-config";
 import { getDictionaryUseClient } from "@/dictionaries/get-dictionary-use-client";
 
-type ThemeSwitcherProps = {
+type ThemeToggleButtonProps = {
   lang: Locale;
 };
 
-export default function ThemeSwitcher({ lang }: ThemeSwitcherProps) {
+export default function ThemeToggleButton({ lang }: ThemeToggleButtonProps) {
   const { systemTheme, theme, setTheme } = useTheme();
   const currentTheme = theme === "system" ? systemTheme : theme;
   const dict = getDictionaryUseClient(lang);
@@ -19,31 +18,25 @@ export default function ThemeSwitcher({ lang }: ThemeSwitcherProps) {
     <>
       {currentTheme === "dark" ? (
         <div
-          className="flex items-center gap-1 cursor-pointer"
+          className="flex items-center gap-2 cursor-pointer"
           onClick={() =>
             theme === "dark" ? setTheme("light") : setTheme("dark")
           }
         >
-          <LuFlashlightOff
-            size={16}
-            className="cursor-pointer transition ease-in-out delay-150 hover:origin-center hover:-translate-y-1 duration-300"
-          />
-          <p className="sm:hidden text-md font-bold">
+          <VscColorMode className="cursor-pointer text-typography max-sm:w-6 max-sm:h-6" />
+          <p className="sm:hidden text-2xl font-bold">
             {dict.navbar.burger.theme[currentTheme as "light" | "dark"]}
           </p>
         </div>
       ) : (
         <div
-          className="flex items-center gap-1 cursor-pointer"
+          className="flex items-center gap-2 cursor-pointer"
           onClick={() =>
             theme === "dark" ? setTheme("light") : setTheme("dark")
           }
         >
-          <LuFlashlight
-            size={16}
-            className="cursor-pointer max-sm:text-primary text-typography transition ease-in-out delay-150 hover:origin-center hover:-translate-y-1 duration-300"
-          />
-          <p className="sm:hidden text-md font-bold max-sm:text-primary">
+          <VscColorMode className="cursor-pointer text-typography max-sm:w-6 max-sm:h-6" />
+          <p className="sm:hidden text-2xl font-bold text-typography">
             {dict.navbar.burger.theme[currentTheme as "light" | "dark"]}
           </p>
         </div>

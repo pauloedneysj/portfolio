@@ -1,17 +1,14 @@
 import "@/styles/globals.css";
 import { Locale, i18n } from "../../config/i18n-config";
-import { Lato } from "next/font/google";
+import { Lato, Rubik, Space_Grotesk } from "next/font/google";
 import type { Metadata } from "next";
-import Navbar from "@/components/Navbar";
-import CursorEffect from "@/components/CursorEffect";
+import Navbar from "@/components/ui/Navbar";
+import CursorEffect from "@/components/ui/CursorEffect";
 import dynamic from "next/dynamic";
 
-const NoSSRProviders = dynamic(
-  () => import("../../components/Providers/Providers"),
-  {
-    ssr: false,
-  }
-);
+const NoSSRProviders = dynamic(() => import("../../providers/Providers"), {
+  ssr: false,
+});
 
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
@@ -19,11 +16,21 @@ export async function generateStaticParams() {
 
 const lato = Lato({ subsets: ["latin"], weight: ["400", "700"] });
 
+export const rubik = Rubik({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
+
+export const inknut_antiqua = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
+
 export const metadata: Metadata = {
-  title: "Paulo Edney | Software Engineer",
+  title: "<Paulo /> | Software Engineer",
   description: "Portfolio created by Paulo Edney with Next.js and Tailwind CSS",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/coding.png",
   },
 };
 

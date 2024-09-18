@@ -1,16 +1,16 @@
 "use client";
 
-import { Locale } from "../../config/i18n-config";
-import { getDictionaryUseClient } from "@/dictionaries/get-dictionary-use-client";
-import { isOpenAtom } from "@/atoms/modal-atoms";
-import { useAtomValue, useSetAtom } from "jotai";
-import Image from "next/image";
-import myPhoto from "@/img/photo.jpg";
-import Modal from "@/components/Modal/Modal";
-import DownloadButton from "@/components/DownloadButton";
-import SocialMedia from "@/components/SocialMedia";
 import { screenCoordsAtom } from "@/atoms/cursor-effect-atoms";
-import { TypeAnimation } from "react-type-animation";
+import { isOpenAtom } from "@/atoms/modal-atoms";
+import Button from "@/components/ui/Button";
+import Modal from "@/components/ui/Modal/Modal";
+import ProfessionAnimation from "@/components/ui/ProfessionAnimation";
+import ProfilePicture from "@/components/layout/ProfilePicture";
+import SocialMedia from "@/components/layout/SocialMedia";
+import { getDictionaryUseClient } from "@/dictionaries/get-dictionary-use-client";
+import links from "@/utils/variables/links";
+import { useAtomValue, useSetAtom } from "jotai";
+import { Locale } from "../../config/i18n-config";
 
 export default function HomePage({
   params: { lang },
@@ -19,8 +19,6 @@ export default function HomePage({
 }) {
   const dict = getDictionaryUseClient(lang);
 
-  var sm = window.matchMedia("(max-width: 640px)").matches;
-
   const isOpen = useAtomValue(isOpenAtom);
   const setScreenCoords = useSetAtom(screenCoordsAtom);
 
@@ -28,6 +26,12 @@ export default function HomePage({
     const x = event.clientX - 320;
     const y = event.clientY - 320;
     setScreenCoords({ x, y });
+  };
+
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = links.resume;
+    link.click();
   };
 
   return (
@@ -52,61 +56,41 @@ export default function HomePage({
           >
             <div className="w-[70%] max-[770px]:w-[65%] max-sm:w-full max-sm:text-center max-sm:space-y-1 space-y-2 max-sm:ml-0 ml-12">
               <p
-                className={`max-sm:text-4xl max-[950px]:text-5xl text-6xl font-bold`}
+                className={`max-sm:text-4xl max-[950px]:text-5xl text-6xl font-bold text-typography`}
               >
                 {dict.home.name}
               </p>
-              <TypeAnimation
-                sequence={[
-                  dict.home.office.backend,
-                  2000,
-                  dict.home.office.frontend,
-                  2000,
-                  dict.home.office.web,
-                  2000,
-                  dict.home.office.softwareEngineer,
-                  2000,
-                ]}
-                wrapper="span"
-                speed={50}
-                style={{
-                  display: "inline-block",
-                  fontSize: sm ? "1.5rem" : "2.25rem",
-                  lineHeight: sm ? "2rem" : "2.5rem",
-                }}
-                repeat={Infinity}
-              />
-              <p className="max-sm:text-xs max-[950px]:text-sm text-md dark:text-zinc-500 text-zinc-800">
+              <ProfessionAnimation lang={lang} />
+              <p className="max-sm:text-xs max-[950px]:text-sm text-md text-typography dark:text-disabled">
                 {dict.home.description}
               </p>
             </div>
           </div>
 
           <div className="max-sm:absolute max-sm:flex max-sm:gap-4 max-sm:bottom-0 max-sm:self-center">
-            <SocialMedia />
-            <DownloadButton title={dict.home.download} />
+            <div className="max-sm:relative absolute max-sm:-ml-2 ml-12 max-sm:bottom-12 bottom-12">
+              <SocialMedia />
+            </div>
+            <div className="max-sm:relative sm:absolute bottom-12 sm:right-2/4 ">
+              <Button title={dict.home.download} onClick={handleDownload} />
+            </div>
           </div>
         </div>
 
         <div
-          id="picture"
-          className="max-sm:hidden flex w-[1px] h-full justify-center items-center"
+          id="profile-picture"
+          className="max-sm:hidden flex w-[0.1px] h-full justify-center items-center"
         >
-          <Image
-            src={myPhoto}
-            alt="My photo"
-            className="absolute max-[950px]:w-40 max-[950px]:h-40 w-52 h-52 mb-36 rounded-full object-cover hover:shadow-2xl hover:grayscale-0 grayscale transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
-            placeholder="blur"
-            blurDataURL={myPhoto.blurDataURL}
-            priority={true}
-          />
+          <div className="absolute mb-36">
+            <ProfilePicture />
+          </div>
         </div>
 
         <div
-          className={`max-sm:hidden w-5/12 h-full bg-secondary dark:bg-secondary ${
+          className={`max-sm:hidden w-5/12 h-full bg-secondary dark:bg-secondary shadow-md dark:shadow-2xl ${
             isOpen == false && "animate-width-inverse"
           }`}
-        ></div>
+        />
       </div>
 
       <Modal lang={lang} />

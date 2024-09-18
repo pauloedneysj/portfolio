@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-typography);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 body {
   position: fixed;
   height: 100%;
@@ -10,22 +27,24 @@ body {
   padding: 0;
   overflow: hidden;
   overscroll-behavior: none;
+  background: --color-primary;
+  background-color: var(--color-primary);
 }
 
 @layer base {
   html {
-    --color-primary: #ffffff;
-    --color-secondary: #000000;
-    --color-buttons: #ffffff;
-    --color-typography: #000000;
+    --color-primary: #f8f8f8;
+    --color-secondary: #e8e8e8;
+    --color-buttons: #141414;
+    --color-typography: #141414;
     --color-disabled: #808080;
   }
 
   html.dark {
-    --color-primary: #000000;
-    --color-secondary: #161616;
-    --color-buttons: #ffffff;
-    --color-typography: #ffffff;
+    --color-primary: #161616;
+    --color-secondary: #0d0d0d;
+    --color-buttons: #f2f2f1;
+    --color-typography: #f2f2f1;
     --color-disabled: #808080;
   }
 }
@@ -128,7 +147,6 @@ body {
 
   .glassmorphism {
     background: rgba(255, 255, 255, 0.11);
-    border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(0px);
     -webkit-backdrop-filter: blur(0px);
@@ -136,7 +154,7 @@ body {
 
   .animate-on-mount {
     position: relative;
-    left: 200%;
+    left: 100%;
     animation: on-mount 3s forwards;
   }
 
@@ -168,5 +186,52 @@ body {
     to {
       right: 0;
     }
+  }
+}
+
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+}
+
+.hover-underline-animation::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--color-typography);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.custom-underline {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--color-typography);
+}
+
+.scroll-hint-opacity {
+  opacity: 0;
+  animation: fadeIn 8s ease forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

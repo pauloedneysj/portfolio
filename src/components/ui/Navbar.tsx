@@ -5,8 +5,8 @@ import { getDictionaryUseClient } from "@/dictionaries/get-dictionary-use-client
 import { useAtom, useSetAtom } from "jotai";
 import { isOpenAtom, modalTypeAtom } from "@/atoms/modal-atoms";
 import { GiHamburgerMenu } from "react-icons/gi";
-import LanguageDropdown from "./LanguageDropdown";
-import ThemeSwitcher from "./ThemeSwitcher";
+import LanguageDropdown from "../layout/LanguageDropdown";
+import ThemeToggleButton from "../layout/ThemeToggleButton";
 import { screenCoordsAtom } from "@/atoms/cursor-effect-atoms";
 
 type NavbarProps = {
@@ -46,36 +46,33 @@ export default function Navbar({ lang }: NavbarProps) {
       <div className="flex items-center space-x-4">
         <GiHamburgerMenu
           onClick={() => handleModal("burger")}
-          className="sm:hidden absolute left-[5%] cursor-pointer transition ease-in-out delay-150 hover:origin-center hover:-translate-y-1 duration-300"
+          className="sm:hidden absolute left-[5%] cursor-pointer transition"
         />
         <p
-          className={`text-md font-bold cursor-pointer transition ease-in-out delay-150 hover:origin-center hover:-translate-y-1 duration-300 ${
-            modalType == "about" ? " -translate-y-1" : ""
-          }`}
+          className="text-typography text-md font-bold cursor-pointer hover-underline-animation"
           onClick={() => handleModal("about")}
         >
+          {modalType == "about" && <span className="custom-underline" />}
           {dict.navbar.about}
         </p>
         <p
-          className={`text-md font-bold cursor-pointer transition ease-in-out delay-150 hover:origin-center hover:-translate-y-1 duration-300 ${
-            modalType == "experience" ? " -translate-y-1" : ""
-          }`}
+          className="text-typography text-md font-bold cursor-pointer hover-underline-animation"
           onClick={() => handleModal("experience")}
         >
+          {modalType == "experience" && <span className="custom-underline" />}
           {dict.navbar.experience}
         </p>
         <p
-          className={`text-md font-bold cursor-pointer transition ease-in-out delay-150 hover:origin-center hover:-translate-y-1 duration-300 ${
-            modalType == "projects" ? " -translate-y-1" : ""
-          }`}
+          className="text-typography text-md font-bold cursor-pointer hover-underline-animation"
           onClick={() => handleModal("projects")}
         >
+          {modalType == "projects" && <span className="custom-underline" />}
           {dict.navbar.projects}
         </p>
       </div>
-      <div className="max-sm:hidden flex flex-row items-center space-x-4">
+      <div className="max-sm:hidden flex flex-row items-center space-x-2">
         <LanguageDropdown lang={lang} />
-        <ThemeSwitcher lang={lang} />
+        <ThemeToggleButton lang={lang} />
       </div>
     </nav>
   );
