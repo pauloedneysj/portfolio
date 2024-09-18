@@ -16,16 +16,6 @@ export async function generateStaticParams() {
 
 const lato = Lato({ subsets: ["latin"], weight: ["400", "700"] });
 
-export const rubik = Rubik({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-});
-
-export const inknut_antiqua = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-});
-
 export const metadata: Metadata = {
   title: "<Paulo /> | Software Engineer",
   description: "Portfolio created by Paulo Edney with Next.js and Tailwind CSS",
