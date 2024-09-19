@@ -50,6 +50,9 @@ export default function HomePage({
           id="presentation"
           className="flex flex-col justify-center w-8/12 h-full"
         >
+          <div className="sm:hidden flex justify-center mb-6">
+            <ProfilePicture />
+          </div>
           <div
             id="presentation-div"
             className="flex flex-col max-sm:mb-36 mb-32"
