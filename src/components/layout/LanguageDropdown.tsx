@@ -3,11 +3,12 @@
 import { Locale, i18n } from "@/config/i18n-config";
 import { IoIosArrowDown } from "react-icons/io";
 import Image from "next/image";
-import enUSFlag from "@/img/flags/en-US.png";
-import ptBRFlag from "@/img/flags/pt-BR.png";
-import { getDictionaryUseClient } from "@/dictionaries/get-dictionary-use-client";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+
+import enUSFlag from "@/img/flags/en-US.webp";
+import ptBRFlag from "@/img/flags/pt-BR.webp";
+import { getDictionaryUseClient } from "@/dictionaries/get-dictionary-use-client";
 
 const flag = {
   "en-US": enUSFlag,

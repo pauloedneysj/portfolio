@@ -2,10 +2,10 @@ import { isOpenAtom, modalTypeAtom } from "@/atoms/modal-atoms";
 import { useAtom } from "jotai";
 import { Locale } from "@/config/i18n-config";
 import { AiOutlineClose } from "react-icons/ai";
-import BurgerWrapper from "./BurgerWrapper";
-import AboutWrapper from "./AboutWrapper";
-import ExperienceWrapper from "./ExperienceWrapper";
-import ProjectsWrapper from "./ProjectsWrapper";
+import BurgerWrapper from "./Burger/BurgerWrapper";
+import AboutWrapper from "./About/AboutWrapper";
+import ExperienceWrapper from "./Experience/ExperienceWrapper";
+import ProjectsWrapper from "./Projects/ProjectsWrapper";
 
 type ModalProps = {
   lang: Locale;

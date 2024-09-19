@@ -17,10 +17,11 @@ export async function generateStaticParams() {
 const lato = Lato({ subsets: ["latin"], weight: ["400", "700"] });
 
 export const metadata: Metadata = {
-  title: "<Paulo /> | Software Engineer",
-  description: "Portfolio created by Paulo Edney with Next.js and Tailwind CSS",
+  title: "Paulo Edney: Fullstack Developer and Software Engineer",
+  description:
+    "Portfolio created by Paulo Edney with Next.js and Tailwind CSS.",
   icons: {
-    icon: "/coding.png",
+    icon: "/img/coding.webp",
   },
 };
 

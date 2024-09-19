@@ -17,7 +17,7 @@ export default function ExperienceWrapper({ lang }: ExperienceProps) {
       <h1 className="max-sm:text-3xl text-4xl font-bold text-typography">
         {experienceTitle}
       </h1>
-      <div className="flex justify-center w-screen overflow-y-auto animate-on-mount">
+      <div className="flex justify-center w-screen overflow-y-auto animate-on-mount mb-10">
         <ExperienceList lang={lang} />
       </div>
     </div>

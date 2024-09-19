@@ -1,7 +1,7 @@
 "use client";
 
 import { Locale } from "@/config/i18n-config";
-import LanguageDropdown from "../../layout/LanguageDropdown";
+import LanguageDropdown from "../../../layout/LanguageDropdown";
 
 import ThemeToggleButton from "@/components/layout/ThemeToggleButton";
 

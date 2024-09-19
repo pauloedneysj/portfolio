@@ -130,7 +130,7 @@ export default function TechnologyList({ stack }: TechnologyListProps) {
   };
 
   return (
-    <div className="flex gap-4">
+    <div className="flex flex-wrap gap-4">
       {stack.map((technology) => (
         <TechnologyIcon
           key={technology}
