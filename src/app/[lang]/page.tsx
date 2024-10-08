@@ -31,6 +31,8 @@ export default function HomePage({
   const handleDownload = () => {
     const link = document.createElement("a");
     link.href = links.resume;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
     link.click();
   };
 

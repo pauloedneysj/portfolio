@@ -1,6 +1,6 @@
 const links = {
   resume:
-    "https://drive.usercontent.google.com/uc?id=13O8EgDzsQ2F87AWuZACC_dNAwWRik_fQ&export=download",
+    "https://docs.google.com/document/d/18p_yh-YqpZ4R46eZYCg6UI_JGZf5_5FF7hp2ZUOmGKM/edit?usp=sharing",
   github: "https://github.com/pauloedneysj",
   linkedin: "https://www.linkedin.com/in/pauloedney",
   instagram: "https://www.instagram.com/pauloedneysj",
